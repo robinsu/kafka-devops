@@ -85,3 +85,18 @@ services:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'broker:29092'
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+
+  pgsql:
+    image: "postgres:12.10" # use latest official postgres version
+    container_name: pgsql
+    # command: postgres -c 'max_connections=300'
+    ports:
+      - "5432:5432"
+    env_file:
+      - database.env # configure postgres
+    environment:
+      TZ: "Asia/Taipei"  
+    volumes:
+      ## 預設 postgresql data 存放在 /media/postgres-data, 請預先建立目錄和權限
+      - ./postgres-data:/var/lib/postgresql/data # persist data even if container shuts down
+    restart: always
