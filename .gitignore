@@ -1,0 +1,9 @@
+**/logs
+*.log
+*.h5
+*.weights
+__pycache__
+.vscode/
+work/
+.DS_Store
+postgres-data
