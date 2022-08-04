@@ -26,7 +26,8 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
 
   connect:
-    image: confluentinc/cp-kafka-connect:7.0.1
+    #image: confluentinc/cp-kafka-connect:7.0.1
+    image: robinsu/kafka-connect:7.0.1
     hostname: connect
     container_name: connect
     depends_on:
